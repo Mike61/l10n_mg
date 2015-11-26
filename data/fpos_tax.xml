@@ -1,0 +1,364 @@
+<odoo>
+  <data noupdate="1">
+        <record id="action_client_l10n_mg_menu" model="ir.actions.client">
+            <field name="name">Open Account Dashboard Menu</field>
+            <field name="tag">reload</field>
+            <field name="params" eval="{'menu_id': ref('account.menu_board_journal_1')}"/>
+        </record>
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_client_l10n_mg_menu"/>
+            <field name="state">open</field>
+        </record>
+    <!-- To solve bug 1240265, we have to delete all fiscal position templates before each update.
+         The valid ones will be re-created later during the update.
+         /!\ This must be executed *before* loading the fiscal position templates!! -->
+    <delete model="account.fiscal.position.template" search="[('chart_template_id','=',ref('l10nmg_chart_template'))]"/>
+
+    <record id="tax_tag_413" model="account.account.tag">
+      <field name="name">Chiffre d'affaire total</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_411" model="account.account.tag">
+      <field name="name">Chiffre d affaires Taxable</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_211" model="account.account.tag">
+      <field name="name">Chiffre d affaires taxable relatif aux operations locales à des personnes assujetties</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_221" model="account.account.tag">
+      <field name="name">Chiffre d affaires taxable relatif aux operations locales à des personnes non assujetties</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_311" model="account.account.tag">
+      <field name="name">Chiffre d affaires Régularisé taxable</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_412" model="account.account.tag">
+      <field name="name">Chiffre d affaires Non Taxable</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_112" model="account.account.tag">
+      <field name="name">Chiffre d affaires a l exportation</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_212" model="account.account.tag">
+      <field name="name">Chiffre d affaires non taxable relatif aux operations locales à des personnes assujetties</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_213" model="account.account.tag">
+      <field name="name">Chiffre d affaires non taxable relatif aux operations locales à des personnes non assujetties</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_312" model="account.account.tag">
+      <field name="name">Chiffre d affaires régularisation Non Taxable</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_415" model="account.account.tag">
+      <field name="name">TVA collectee durant la periode</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_215" model="account.account.tag">
+      <field name="name">TVA collectées sur CA assujeties</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_225" model="account.account.tag">
+      <field name="name">TVA collectées sur CA non assujeties</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_315" model="account.account.tag">
+      <field name="name">TVA collectées à régulariser</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_1000" model="account.account.tag">
+      <field name="name">Total des achats</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_1001" model="account.account.tag">
+      <field name="name">Achats locaux</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_1002" model="account.account.tag">
+      <field name="name">Achats importation</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_10" model="account.account.tag">
+      <field name="name">Total TVA deductible (800+900)</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_715" model="account.account.tag">
+      <field name="name">TVA deductible</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_515" model="account.account.tag">
+      <field name="name">TVA deductibles sur les biens d'équipements et immobilisations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_511" model="account.account.tag">
+      <field name="name">TVA deductibles sur les biens locaux d'équipements et immobilisations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_512" model="account.account.tag">
+      <field name="name">TVA deductibles sur les biens importations d'équipements et immobilisations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_525" model="account.account.tag">
+      <field name="name">TVA deductibles sur marchandises</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_521" model="account.account.tag">
+      <field name="name">TVA deductibles sur marchandises locales</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_522" model="account.account.tag">
+      <field name="name">TVA deductibles sur marchandises importations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_535" model="account.account.tag">
+      <field name="name">TVA deductible sur matieres premieres</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_531" model="account.account.tag">
+      <field name="name">TVA deductible sur matieres premieres locales</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_532" model="account.account.tag">
+      <field name="name">TVA deductible sur matieres premieres importations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_545" model="account.account.tag">
+      <field name="name">TVA deductible sur services et/ou biens matières consommables</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_541" model="account.account.tag">
+      <field name="name">TVA deductible sur services et/ou biens matières consommables locales</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_542" model="account.account.tag">
+      <field name="name">TVA deductible sur services et/ou biens matières consommables importations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_615" model="account.account.tag">
+      <field name="name">TVA déductibles : Autres régularisations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_611" model="account.account.tag">
+      <field name="name">TVA déductibles : Autres régularisations locales</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_612" model="account.account.tag">
+      <field name="name">TVA déductibles : Autres régularisations importations</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_8" model="account.account.tag">
+      <field name="name">Prorata de deduction</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_9" model="account.account.tag">
+      <field name="name">Report de credit de la periode precedente</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_11" model="account.account.tag">
+      <field name="name">Total TVA a verser (400-910)</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_12" model="account.account.tag">
+      <field name="name">Total de Credit de TVA (si negatif) (910-400)</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_13" model="account.account.tag">
+      <field name="name">Remboursement de credit de TVA demande</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="tax_tag_14" model="account.account.tag">
+      <field name="name">Credit de TVA reportable (912-913)</field>
+      <field name="applicability">taxes</field>
+    </record>
+    <record id="attn_tva_0" model="account.tax.template">
+      <field name="name">TVA collectées sur CA à l'export 0%</field>
+      <field name="description">TVA collectées sur CA à l'export 0%</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0</field>
+      <field name="type_tax_use">sale</field>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_112')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44571" model="account.tax.template">
+      <field name="name">TVA collectées sur CA assujeties</field>
+      <field name="description">TVA collectées sur CA assujeties</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">sale</field>
+      <field name="account_id" ref="l10n_mg.pcg_44571"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44571"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_211'), ref('tax_tag_215')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44572" model="account.tax.template">
+      <field name="name">TVA collectées sur CA non assujeties</field>
+      <field name="description">TVA collectées sur CA non assujeties</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">sale</field>
+      <field name="account_id" ref="l10n_mg.pcg_44572"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44572"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_221'), ref('tax_tag_225')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44561" model="account.tax.template">
+      <field name="name">TVA deductibles sur les biens d'équipements et immobilisation locaux</field>
+      <field name="description">TVA deductibles sur les biens d'équipements et immobilisation locaux</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44561"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44561"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1001'), ref('tax_tag_511')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44562" model="account.tax.template">
+      <field name="name">TVA deductibles sur les biens d'équipements et immobilisation importations</field>
+      <field name="description">TVA deductibles sur les biens d'équipements et immobilisation importations</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44562"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44562"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1002'), ref('tax_tag_512')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44563" model="account.tax.template">
+      <field name="name">TVA deductibles sur marchandises locales</field>
+      <field name="description">TVA deductibles sur marchandises locales</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44563"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44563"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1001'), ref('tax_tag_521')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44564" model="account.tax.template">
+      <field name="name">TVA deductibles sur marchandises importées</field>
+      <field name="description">TVA deductibles sur marchandises importées</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44564"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44564"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1002'), ref('tax_tag_522')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44565" model="account.tax.template">
+      <field name="name">TVA deductibles sur matières premières locales</field>
+      <field name="description">TVA deductibles sur matières premières locales</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44565"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44565"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1001'), ref('tax_tag_531')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44566" model="account.tax.template">
+      <field name="name">TVA deductibles sur matières premières importées</field>
+      <field name="description">TVA deductibles sur matières premières importées</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44566"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44566"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1002'), ref('tax_tag_532')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44567" model="account.tax.template">
+      <field name="name">TVA deductibles sur service et/ou biens matières consommables locaux</field>
+      <field name="description">TVA deductibles sur service et/ou biens matières consommables locaux</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44567"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44567"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1001'), ref('tax_tag_541')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="attn_44568" model="account.tax.template">
+      <field name="name">TVA deductibles sur service et/ou biens matières consommables importes</field>
+      <field name="description">TVA deductibles sur service et/ou biens matières consommables importes</field>
+      <field name="amount_type">percent</field>
+      <field name="amount">0.2</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="account_id" ref="l10n_mg.pcg_44568"/>
+      <field name="refund_account_id" ref="l10n_mg.pcg_44568"/>
+      <field name="price_include" eval="0"/>
+      <field name="tag_ids" eval="[(6, 0, [ref('tax_tag_1002'), ref('tax_tag_542')])]"/>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="fpos_1" model="account.fiscal.position.template">
+      <field name="name">Régime National assujetti</field>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="fpos_2" model="account.fiscal.position.template">
+      <field name="name">Régime National non assujetti</field>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="fpos_3" model="account.fiscal.position.template">
+      <field name="name">Régime National non taxé</field>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="fpos_4" model="account.fiscal.position.template">
+      <field name="name">Régime Reste du monde</field>
+      <field name="chart_template_id" ref="l10n_mg.l10nmg_chart_template"/>
+    </record>
+    <record id="fpos_tax_1" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_4"/>
+      <field name="tax_src_id" ref="attn_44561"/>
+      <field name="tax_dest_id" ref="attn_44562"/>
+    </record>
+    <record id="fpos_tax_2" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_4"/>
+      <field name="tax_src_id" ref="attn_44563"/>
+      <field name="tax_dest_id" ref="attn_44564"/>
+    </record>
+    <record id="fpos_tax_3" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_4"/>
+      <field name="tax_src_id" ref="attn_44565"/>
+      <field name="tax_dest_id" ref="attn_44566"/>
+    </record>
+    <record id="fpos_tax_4" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_4"/>
+      <field name="tax_src_id" ref="attn_44567"/>
+      <field name="tax_dest_id" ref="attn_44568"/>
+    </record>
+    <record id="fpos_tax_5" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_4"/>
+      <field name="tax_src_id" ref="attn_44571"/>
+      <field name="tax_dest_id" ref="attn_tva_0"/>
+    </record>
+    <record id="fpos_tax_6" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_4"/>
+      <field name="tax_src_id" ref="attn_44572"/>
+      <field name="tax_dest_id" ref="attn_tva_0"/>
+    </record>
+    <record id="fpos_tax_7" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_2"/>
+      <field name="tax_src_id" ref="attn_44571"/>
+      <field name="tax_dest_id" ref="attn_44572"/>
+    </record>
+    <record id="fpos_tax_8" model="account.fiscal.position.tax.template">
+      <field name="position_id" ref="fpos_3"/>
+      <field name="tax_src_id" ref="attn_44571"/>
+      <field name="tax_dest_id" ref="attn_tva_0"/>
+    </record>
+  </data>
+</odoo>

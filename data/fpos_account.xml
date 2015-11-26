@@ -1,0 +1,114 @@
+<odoo>
+  <data noupdate="1">
+    <record id="fpos_account_1" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7011"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7013"/>
+    </record>
+    <record id="fpos_account_2" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7011"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7012"/>
+    </record>
+    <record id="fpos_account_3" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7021"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7023"/>
+    </record>
+    <record id="fpos_account_4" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7021"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7022"/>
+    </record>
+    <record id="fpos_account_5" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7031"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7033"/>
+    </record>
+    <record id="fpos_account_6" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7031"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7032"/>
+    </record>
+    <record id="fpos_account_7" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7041"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7043"/>
+    </record>
+    <record id="fpos_account_8" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7041"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7042"/>
+    </record>
+    <record id="fpos_account_9" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7051"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7053"/>
+    </record>
+    <record id="fpos_account_10" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7051"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7052"/>
+    </record>
+    <record id="fpos_account_11" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7061"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7063"/>
+    </record>
+    <record id="fpos_account_12" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_7061"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_7062"/>
+    </record>
+    <record id="fpos_account_13" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70911"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70913"/>
+    </record>
+    <record id="fpos_account_14" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70911"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70912"/>
+    </record>
+    <record id="fpos_account_15" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70921"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70923"/>
+    </record>
+    <record id="fpos_account_16" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70921"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70922"/>
+    </record>
+    <record id="fpos_account_17" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70941"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70943"/>
+    </record>
+    <record id="fpos_account_18" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70941"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70942"/>
+    </record>
+    <record id="fpos_account_19" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70951"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70953"/>
+    </record>
+    <record id="fpos_account_20" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70951"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70952"/>
+    </record>
+    <record id="fpos_account_21" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_3"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70961"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70963"/>
+    </record>
+    <record id="fpos_account_22" model="account.fiscal.position.account.template">
+      <field name="position_id" ref="l10n_mg.fpos_2"/>
+      <field name="account_src_id" ref="l10n_mg.pcg_70961"/>
+      <field name="account_dest_id" ref="l10n_mg.pcg_70962"/>
+    </record>
+  </data>
+</odoo>

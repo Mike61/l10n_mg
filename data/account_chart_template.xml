@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <data noupdate="0">
+        <record id="pcg_581" model="account.account.template">
+		    <field name="name">Virements de fonds</field>
+		    <field name="code">581</field>
+		    <field name="reconcile" eval="True"/>
+		    <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+		</record>
+
+        <!-- Chart template -->
+        <record id="l10nmg_chart_template" model="account.chart.template">
+            <field name="name">Madagascar Plan Comptable Général</field>
+            <field name="transfer_account_id" ref="pcg_581"/>
+            <field name="currency_id" ref="base.MGA"/>
+        </record>
+        <record id="pcg_581" model="account.account.template">
+            <field name="chart_template_id" ref="l10nmg_chart_template"/>
+        </record>
+  </data>
+</odoo>
